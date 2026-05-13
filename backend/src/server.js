@@ -12,17 +12,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
-
+const customCors = cors({
+  origin: [
+    "http://localhost:5173",
+    "https://kind-island-0dd74a703.7.azurestaticapps.net",
+  ],
+});
 // middelware
 if (process.env.NODE_ENV !== "production") {
-  app.use(
-    cors({
-      origin: [
-        "http://localhost:5173",
-        "https://kind-island-0dd74a703.7.azurestaticapps.net",
-      ],
-    }),
-  );
+  app.use(customCors);
 }
 app.use(express.json()); // this middleware will parse JSON bodies: req.body
 app.use(rateLimiter);
@@ -33,7 +31,7 @@ app.use(rateLimiter);
 //   next();
 // });
 
-app.use("/api/notes", notesRoutes);
+app.use("/api/notes", notesRoutes, customCors);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
