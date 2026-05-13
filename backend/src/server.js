@@ -15,7 +15,14 @@ const __dirname = path.resolve();
 
 // middelware
 if (process.env.NODE_ENV !== "production") {
-  app.use(cors({ origin: "http://localhost:5173" }));
+  app.use(
+    cors({
+      origin: [
+        "http://localhost:5173",
+        "https://kind-island-0dd74a703.7.azurestaticapps.net",
+      ],
+    }),
+  );
 }
 app.use(express.json()); // this middleware will parse JSON bodies: req.body
 app.use(rateLimiter);
