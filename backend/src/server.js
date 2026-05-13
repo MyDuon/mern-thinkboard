@@ -42,5 +42,3 @@ connectDB().then(() => {
     console.log("server started on PORT:", PORT);
   });
 });
-
-//mongodb+srv://mydh1502:EFI9VgwiG3gWJ5yA@cluster0.u2bkwmp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
