@@ -1,5 +1,6 @@
 name: Azure Static Web Apps CI/CD
-
+env:
+  VITE_BASE_URL: "https://mern-thinkboard-l60u.onrender.com"  # Workflow level
 on:
   push:
     branches:
